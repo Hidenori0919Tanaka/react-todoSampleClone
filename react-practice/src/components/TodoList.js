@@ -7,33 +7,14 @@ const Todo = () => {
             isCompleted: false
         }
     ];
-    const [todos, setTodos] = useState(initialState);
-    const [task, setTask] = useState('')
-    const handleOnSubmit = (event) => {
-        event.preventDefault()
-        if (task === '') return
-        setTodos(todos => [...todos, { task, isCompleted: false }])
-        setTask('')
-    }
-    const handleNewTask = (event) => {
-        setTask(event.target.value)
-    }
+    const [text, setText] = useState(initialState);
 
     return (
         <div>
             <h1>ToDo List</h1>
-            <form onSubmit={handleOnSubmit}>
-                Add Task :
-                <input
-                    value={task}
-                    placeholder="Add New Task"
-                    onChange={handleNewTask}
-                />
-                <button type="submit">Add</button>
-            </form>
             <ul>
-                {todos.map((todo, index) => (
-                    todos.length > 1 && todos.task !== '' && todos.isCompleted ?
+                {text.map((todo, index) => (
+                    text.length > 1 && text.task !== '' && text.isCompleted ?
                         <li key={index}>{todo.task}</li> : <li></li>
                 ))}
             </ul>
